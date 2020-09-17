@@ -16,8 +16,6 @@ class DailyScope::CLI
     def get_sign
         #to be scraped instead... possibly maybe?
         #@signs = ['Scorpio', 'Saggitarius', 'Capricorn', 'Aquarius', 'Pisces']
-        DailyScope::Sign.new('Scorpio')
-        DailyScope::Sign.new('Libra')
         @signs = DailyScope::Sign.all
     end
 
@@ -39,8 +37,12 @@ class DailyScope::CLI
 
     def show_horoscope_for(chosen_sign)
         sign = @signs[chosen_sign - 1]
-        puts "Here is your horoscope for #{sign}."
+        puts "Here is your horoscope for #{sign.name}."
     end
 
 end
 
+#I have to eventually refer to Avis video to be able to
+#include the date to the initial name in the welcome list
+
+#look into colorize gem or use video at 50:25

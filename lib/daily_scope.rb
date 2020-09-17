@@ -4,7 +4,7 @@ require_relative "daily_scope/sign"
 require_relative "daily_scope/scraper"
 require 'pry'
 require 'nokogiri'
-
+require 'open-uri'
 
 module DailyScope
   class Error < StandardError; end

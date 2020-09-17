@@ -10,6 +10,7 @@ class DailyScope::Sign
     end
 
     def self.all
+        DailyScope::Scraper.scrape_signs if @@all.empty?
         @@all
     end
 
