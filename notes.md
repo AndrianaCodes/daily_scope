@@ -5,3 +5,7 @@ when user chooses, user will be able to see their daily horoscope
 
 lets hope and pray i can pull this off
 
+Classes: 
+CLI
+Scope
+Scraper

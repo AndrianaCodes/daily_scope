@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/daily_scope'
+DailyScope::CLI.new.call
