@@ -1,8 +1,8 @@
 class DailyScope::Date 
 
     @@all = []
-    attr_accessor :name 
-    #:date, :summary
+    attr_accessor :name, :signs 
+    #name is equal to date, :summary
 
     def initialize(name)
         @name = name

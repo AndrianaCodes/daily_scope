@@ -5,10 +5,18 @@ class DailyScope::Scraper
 
         dates = doc.css("div.sign-image p")
         
-        dates.each do |s|
-            name = s.text
+        dates.each do |d|
+            name = d.text
             DailyScope::Date.new(name)
         end
+
+        #signs = doc.css("div.sign-container h3")
+
+        #signs.each do |s|
+        #    name = s.text
+        #    DailyScope::Date.new(name)
+        #end
+
     end
 
 end

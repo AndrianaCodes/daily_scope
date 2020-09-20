@@ -7,16 +7,16 @@ class DailyScope::CLI
         get_user_date
     end
 
-    #show list of user zodiac signs
-    #show daily horoscope after the user clicks on number 
-    #list signs 
+    #show list of dates
+    #user types in number that corresponds to their birthday
+    #shows what their zodiac sign is and what their horoscope summary is
+    #list dates
     #goodbye method
 
 
     def get_date
-        #to be scraped instead... possibly maybe?
-        #@signs = ['Scorpio', 'Saggitarius', 'Capricorn', 'Aquarius', 'Pisces']
         @dates = DailyScope::Date.all
+        #@signs = DailyScope::Sign.all
     end
 
     def list_dates
@@ -37,12 +37,13 @@ class DailyScope::CLI
 
     def show_date_for(chosen_date)
         date = @dates[chosen_date - 1]
-        puts "Here is your horoscope for #{date.name}."
+        puts "Hello sign name!" 
+        puts "You are a sign name because your bday is" 
+        puts "between the dates of #{date.name}."
+        puts ""
+        puts "Here is a quick summary of your daily horoscope:"
     end
 
 end
-
-#I have to eventually refer to Avis video to be able to
-#include the date to the initial name in the welcome list
 
 #look into colorize gem or use video at 50:25
