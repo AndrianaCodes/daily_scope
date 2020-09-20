@@ -1,4 +1,4 @@
-class DailyScope::Sign 
+class DailyScope::Date 
 
     @@all = []
     attr_accessor :name 
@@ -10,7 +10,7 @@ class DailyScope::Sign
     end
 
     def self.all
-        DailyScope::Scraper.scrape_signs if @@all.empty?
+        DailyScope::Scraper.scrape_dates if @@all.empty?
         @@all
     end
 

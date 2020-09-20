@@ -1,6 +1,6 @@
 require_relative "daily_scope/version"
 require_relative "daily_scope/cli"
-require_relative "daily_scope/sign"
+require_relative "daily_scope/date"
 require_relative "daily_scope/scraper"
 require 'pry'
 require 'nokogiri'

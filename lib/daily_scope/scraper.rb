@@ -1,13 +1,13 @@
 class DailyScope::Scraper
 
-    def self.scrape_signs
+    def self.scrape_dates
         doc = Nokogiri::HTML(open("https://www.sunsigns.com/horoscopes/daily"))
 
-        signs = doc.css("h3")
+        dates = doc.css("div.sign-image p")
         
-        signs.each do |s|
+        dates.each do |s|
             name = s.text
-            DailyScope::Sign.new(name)
+            DailyScope::Date.new(name)
         end
     end
 
