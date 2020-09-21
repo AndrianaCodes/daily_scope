@@ -1,8 +1,12 @@
 # DailyScope
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/daily_scope`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to your daily horoscope summary! 
 
-TODO: Delete this and the text above, and describe your gem
+Type in ./bin/daily_scope to see a list of zodiac signs
+
+Type the number of your choice to view a summary of your horoscope
+
+Come back every day for a different reading! 
 
 ## Installation
 
