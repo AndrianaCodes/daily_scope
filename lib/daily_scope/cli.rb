@@ -1,54 +1,75 @@
 class DailyScope::CLI
 
-    def call
-        puts "\nWelcome to your Daily Horoscope!\n"
-        get_date
-        list_dates
-        get_user_date
+    def call 
+        puts "" 
+        puts "Welcome to your Daily Horoscope" 
+        get_signs 
+        get_facts 
+        list_signs 
+        get_user_sign 
+        what_next 
+        goodbye 
+    end 
+    
+    def get_signs 
+        @signs = DailyScope::Horoscope.all 
+        DailyScope::Scraper.scrape_signs if @signs.empty? 
+    end 
+    
+    def get_facts 
+        DailyScope::Scraper.scrape_info 
+        if @signs[0].facts.nil? 
     end
-
-    #show list of dates
-    #user types in number that corresponds to their birthday
-    #shows what their zodiac sign is and what their horoscope summary is
-    #list dates
-    #goodbye method
-
-
-    def get_date
-        @dates = DailyScope::Date.all
-        #@signs = DailyScope::Sign.all
-    end
-
-    def list_dates
-        puts "When is your birthday?"
-        @dates.each.with_index(1) do |date, index| 
-        puts "#{index}. #{date.name}"
+            
+    def list_signs 
+        puts "" 
+        puts "Choose a sign # to see a summary of your horoscope!" 
+        puts "" 
+        
+        @signs.each_with_index do |sign| 
+        puts " #{sign.name}" 
         end
     end
 
-    def get_user_date
-        chosen_date = gets.strip.to_i
-        show_date_for(chosen_date) if valid_input(chosen_date, @dates)
-    end
-
-    def valid_input(input, data)
-        input.to_i <= data.length && input.to_i > 0
-    end
-
-    def show_date_for(chosen_date)
-        date = @dates[chosen_date - 1]
-        date.get_signs
-        #line above is put in here because i will only use it in this method
-        puts "Hello SIGN NAME!" 
-        puts "You are a SIGN NAME because your bday is" 
-        puts "between the dates of #{date.name}."
-        puts ""
-        puts "Here is a quick summary of your daily horoscope:"
-        date.signs.each.with_index(1) do |sign, idx|
-            puts "#{idx}. #{sign.name}"
-        end
-    end
-
+    def get_user_sign 
+        chosen_sign = gets.strip.to_i 
+        show_details_for(chosen_sign) if valid_input(chosen_sign, @signs) 
+    end 
+    
+    def valid_input(input, data) 
+        input.to_i <= data.length && input.to_i > 0 
+    end 
+    
+    def show_details_for(chosen_sign) 
+    sign = @signs[chosen_sign -1] 
+        puts "----------------------------------------" 
+        puts"Hello ##{sign.name}, Your Horoscope is here:" 
+        puts "----------------------------------------" 
+        puts "" 
+        puts "Quick Summary: 
+                        #{sign.facts}" 
+        puts "" 
+    end 
+    
+    def goodbye 
+        puts "See you tomorrow for your next reading!" 
+    end 
+    
+    def what_next 
+        puts "" 
+        puts " Would you like to see a different horoscope? 
+        Please enter Y or N" 
+        @input = gets.strip.upcase 
+        if @input == "Y" 
+            call 
+        elsif @input == "N" 
+            DailyScope::Scraper.scrape_info 
+            goodbye 
+            exit 
+        else puts "" 
+            puts "Sorry, I don't understand that choice." 
+            what_next 
+        end 
+    end 
+end 
 end
-
-#look into colorize gem or use video at 50:25
