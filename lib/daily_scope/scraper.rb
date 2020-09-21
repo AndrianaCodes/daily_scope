@@ -1,22 +1,25 @@
-class DailyScope::Scraper
-
-    def self.scrape_dates
-        doc = Nokogiri::HTML(open("https://www.sunsigns.com/horoscopes/daily"))
-
-        dates = doc.css("div.sign-image p")
+class DailyScope::Scraper 
+    
+    def self.scrape_signs 
+        html = open("https://www.sunsigns.com/horoscopes/daily") 
+        doc = Nokogiri::HTML(html) 
+        entry_content = doc.css("div.sign-container") 
+        h3_array = entry_content.css("h3") 
+        h3_array.each do |sign| 
+            name = sign.text 
+            DailyScope::Horoscope.new(name) 
+        end 
+    end 
+    
+    def self.scrape_info 
+        html = open("https://www.sunsigns.com/horoscopes/daily") 
+        doc = Nokogiri::HTML(html) 
+        entry_content = doc.css("div.sign-container") 
+        info = entry_content.css("div.sign-description") 
+        info.pop 
+        info.each_with_index do |facts, i| 
         
-        dates.each do |d|
-            name = d.text
-            DailyScope::Date.new(name)
-        end
-
-        #signs = doc.css("div.sign-container h3")
-
-        #signs.each do |s|
-        #    name = s.text
-        #    DailyScope::Date.new(name)
-        #end
-
-    end
-
-end
+            DailyScope::Horoscope.all[i].facts = facts.text 
+        end 
+    end 
+end 

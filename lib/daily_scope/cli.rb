@@ -37,11 +37,16 @@ class DailyScope::CLI
 
     def show_date_for(chosen_date)
         date = @dates[chosen_date - 1]
-        puts "Hello sign name!" 
-        puts "You are a sign name because your bday is" 
+        date.get_signs
+        #line above is put in here because i will only use it in this method
+        puts "Hello SIGN NAME!" 
+        puts "You are a SIGN NAME because your bday is" 
         puts "between the dates of #{date.name}."
         puts ""
         puts "Here is a quick summary of your daily horoscope:"
+        date.signs.each.with_index(1) do |sign, idx|
+            puts "#{idx}. #{sign.name}"
+        end
     end
 
 end
