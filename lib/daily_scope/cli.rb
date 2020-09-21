@@ -26,8 +26,8 @@ class DailyScope::CLI
         puts "Choose a sign # to see a summary of your horoscope!" 
         puts "" 
         
-        @signs.each_with_index do |sign| 
-        puts " #{sign.name}" 
+        @signs.each_with_index do |sign, i| 
+        puts " #{i+1}. #{sign.name}" 
         end
     end
 
