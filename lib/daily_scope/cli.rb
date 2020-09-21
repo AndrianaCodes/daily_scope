@@ -43,11 +43,11 @@ class DailyScope::CLI
     def show_details_for(chosen_sign) 
     sign = @signs[chosen_sign -1] 
         puts "----------------------------------------" 
-        puts"Hello ##{sign.name}, Your Horoscope is here:" 
+        puts"Hello #{sign.name}, Your Horoscope is here:" 
         puts "----------------------------------------" 
         puts "" 
         puts "Quick Summary: 
-                        #{sign.facts}" 
+        #{sign.facts}" 
         puts "" 
     end 
     
